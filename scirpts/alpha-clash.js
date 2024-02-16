@@ -13,7 +13,13 @@
 // }
 function handleKeyBoardPress(event){
     const playerPressed = event.key;
-    console.log(`button pressed`, playerPressed);
+    console.log(`player pressed`, playerPressed);
+
+    // stop the game
+    if(playerPressed === `Escape`){
+        gameOver();
+    }
+
     // get to the expected to press
     const nowAlphabet1 = document.getElementById(`now-alphabet`);
     const nowAlphabet = nowAlphabet1.innerText;
