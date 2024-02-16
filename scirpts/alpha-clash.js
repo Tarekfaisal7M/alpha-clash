@@ -49,6 +49,10 @@ function handleKeyBoardPress(event){
         const updateLife = currentLife - 1;
         setTextElementVAlueById(`current-life`, updateLife);
 
+        if(updateLife === 0){
+            gameOver();
+        }
+
 
 
         // ------------------
@@ -76,7 +80,30 @@ function continueGame(){
 
 
 function play(){
+    // hide everything show only play ground
     hideElementById(`home`);
+    hideElementById(`score`);
     showElementById(`play-ground`);
+
+    // reset score & life
+    setTextElementVAlueById(`current-life`, 5);
+    setTextElementVAlueById(`current-score`,0);
     continueGame();
+}
+
+function gameOver(){
+    hideElementById(`play-ground`);
+    showElementById(`score`);
+
+    // update final score
+    // get the final score
+    const finalScore = getTextElementValueById(`current-score`);
+    console.log(finalScore);
+    setTextElementVAlueById(`final-score`, finalScore);
+
+    // clear the last seclected alphabet of highlights
+    const CurrentAlphabet = getElementTextById(`now-alphabet`);
+    // console.log(CurrentAl
+    removeBackgroundColor(CurrentAlphabet);
+
 }
