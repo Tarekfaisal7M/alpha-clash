@@ -23,30 +23,43 @@ function handleKeyBoardPress(event){
     // cheak the match word
     if(playerPressed === expectedAlphabet){
         console.log(`you win the game & get 1 point`);
+        const currentScore = getTextElementValueById(`current-score`);
+        // console.log(currentScore);
+        const updateScore = currentScore + 1;
+        setTextElementVAlueById(`current-score`, updateScore);
 
         // get a current score
-        const currentScoreElementID = document.getElementById(`current-score`);
-        const currentScoreText = currentScoreElementID.innerText;
-        const currentScore =parseInt(currentScoreText);
-        console.log(currentScore);
+        // const currentScoreElementID = document.getElementById(`current-score`);
+        // const currentScoreText = currentScoreElementID.innerText;
+        // const currentScore =parseInt(currentScoreText);
+        // console.log(currentScore);
 
-        const newScore = currentScore + 1;
-        currentScoreElementID.innerText = newScore;
+        // const newScore = currentScore + 1;
+        // currentScoreElementID.innerText = newScore;
+        // ----------------------------------------------------
 
+        // if eta must lagbe-----
         console.log(`you have pressed correctly`, expectedAlphabet);
         removeBackgroundColor(expectedAlphabet);
         continueGame();
     }
     else{
         console.log(`you lost the game & lost point`);
-        // get the current life number
-        const currentLifeElement = document.getElementById(`current-life`);
-        const currentLifeText = currentLifeElement.innerText;
-        const currentLife = parseInt(currentLifeText);
-        console.log(currentLife);
+        const currentLife = getTextElementValueById(`current-life`);
+        const updateLife = currentLife - 1;
+        setTextElementVAlueById(`current-life`, updateLife);
 
-        const newLife = currentLife - 1;
-        currentLifeElement.innerText = newLife;
+
+
+        // ------------------
+        // get the current life number
+        // const currentLifeElement = document.getElementById(`current-life`);
+        // const currentLifeText = currentLifeElement.innerText;
+        // const currentLife = parseInt(currentLifeText);
+        // console.log(currentLife);
+
+        // const newLife = currentLife - 1;
+        // currentLifeElement.innerText = newLife;
     }
 }
 document.addEventListener(`keyup`, handleKeyBoardPress);
